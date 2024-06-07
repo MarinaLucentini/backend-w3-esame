@@ -27,4 +27,13 @@ public class ArchivioDao {
         if (elementoCatalogo == null) throw new ArchivioException(id);
         return elementoCatalogo;
     }
+
+    public void findAndDeleteById(String id) {
+        Catalogo found = this.findById(id);
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        em.remove(found);
+        transaction.commit();
+        System.out.println("L'elemento" + found.getTitolo() + "è stato correttamente eliminato");
+    }
 }
