@@ -5,6 +5,7 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 import marinalucentini.entities.Catalogo;
 import marinalucentini.entities.Libro;
+import marinalucentini.entities.Prestito;
 import marinalucentini.entities.Utente;
 import marinalucentini.exception.ArchivioException;
 
@@ -74,4 +75,13 @@ public class ArchivioDao {
         query.setParameter("cognome", "%" + cognome + "%");
         return query.getSingleResult();
     }
+
+    public void savePrestito(Prestito prestito) {
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        em.persist(prestito);
+        transaction.commit();
+        System.out.println("Il prestito" + prestito.getId() + "è stato aggiunto al db");
+    }
+
 }

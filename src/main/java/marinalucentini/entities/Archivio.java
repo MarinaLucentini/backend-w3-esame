@@ -29,5 +29,10 @@ public class Archivio {
         return utente;
     }
 
+    public static Prestito prendereInPrestito(Utente utente, Catalogo elementoPrestato, LocalDate inizioPrestito) {
+        Prestito prestito = new Prestito(utente, elementoPrestato, inizioPrestito, LocalDate.from(inizioPrestito).plusDays(30));
+        return prestito;
+    }
+
 
 }

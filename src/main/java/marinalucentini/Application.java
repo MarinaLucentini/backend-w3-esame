@@ -4,10 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import marinalucentini.dao.ArchivioDao;
-import marinalucentini.entities.Archivio;
-import marinalucentini.entities.Catalogo;
-import marinalucentini.entities.Libro;
-import marinalucentini.entities.Utente;
+import marinalucentini.entities.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -48,7 +45,10 @@ public class Application {
 //        archivioDao.UserSave(utente3);
         Utente utenteTrovato = archivioDao.findByNameAndSurname("y", "w");
         System.out.println(utenteTrovato);
-        
+        Prestito prestitoNonrestituito1 = Archivio.prendereInPrestito(utenteTrovato, elementoTrovato, LocalDate.of(2024, 05, 15));
+        //  archivioDao.savePrestito(prestitoNonrestituito1);
+        Prestito prestitoNonrestituito2 = Archivio.prendereInPrestito(utenteTrovato, elementoTrovato, LocalDate.of(2024, 06, 07));
+        archivioDao.savePrestito(prestitoNonrestituito2);
         em.close();
         emf.close();
     }
