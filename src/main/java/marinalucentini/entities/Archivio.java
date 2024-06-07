@@ -3,6 +3,7 @@ package marinalucentini.entities;
 import com.github.javafaker.Faker;
 import marinalucentini.enums.Periodicità;
 
+import java.time.LocalDate;
 import java.util.Random;
 
 public class Archivio {
@@ -20,6 +21,12 @@ public class Archivio {
         int numeroPagine = random.nextInt(50, 100);
         Rivista rivista = new Rivista(faker.book().title(), annoPubblicazione, numeroPagine, periodicità);
         return rivista;
+    }
+
+    public static Utente createUtente(LocalDate dataDiNascita) {
+        Faker faker = new Faker();
+        Utente utente = new Utente(faker.name().firstName(), faker.name().lastName(), dataDiNascita);
+        return utente;
     }
 
 

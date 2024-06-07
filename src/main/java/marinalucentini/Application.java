@@ -7,7 +7,9 @@ import marinalucentini.dao.ArchivioDao;
 import marinalucentini.entities.Archivio;
 import marinalucentini.entities.Catalogo;
 import marinalucentini.entities.Libro;
+import marinalucentini.entities.Utente;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Application {
@@ -38,6 +40,12 @@ public class Application {
         // libriCercati.forEach(el -> System.out.println(el));
         List<Catalogo> elementiCercatiByTitle = archivioDao.findByTitle("ad");
         elementiCercatiByTitle.forEach(el -> System.out.println(el));
+        Utente utente1 = Archivio.createUtente(LocalDate.of(1983, 5, 31));
+        Utente utente2 = Archivio.createUtente(LocalDate.of(1992, 6, 10));
+        Utente utente3 = Archivio.createUtente(LocalDate.of(1983, 4, 15));
+//        archivioDao.UserSave(utente1);
+//        archivioDao.UserSave(utente2);
+//        archivioDao.UserSave(utente3);
         em.close();
         emf.close();
     }

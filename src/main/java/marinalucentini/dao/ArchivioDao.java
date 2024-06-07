@@ -5,6 +5,7 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 import marinalucentini.entities.Catalogo;
 import marinalucentini.entities.Libro;
+import marinalucentini.entities.Utente;
 import marinalucentini.exception.ArchivioException;
 
 import java.util.List;
@@ -57,5 +58,13 @@ public class ArchivioDao {
         TypedQuery<Catalogo> query = em.createQuery("SELECT a FROM Catalogo a WHERE  LOWER(titolo) LIKE LOWER(:title) ", Catalogo.class);
         query.setParameter("title", "%" + title + "%");
         return query.getResultList();
+    }
+
+    public void UserSave(Utente utente) {
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        em.persist(utente);
+        transaction.commit();
+        System.out.println("L'utente" + utente.getNome() + utente.getCognome() + "è stato aggiunto correttamente");
     }
 }
