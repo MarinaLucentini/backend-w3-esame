@@ -67,4 +67,11 @@ public class ArchivioDao {
         transaction.commit();
         System.out.println("L'utente" + utente.getNome() + utente.getCognome() + "è stato aggiunto correttamente");
     }
+
+    public Utente findByNameAndSurname(String nome, String cognome) {
+        TypedQuery<Utente> query = em.createQuery("SELECT a FROM Utente a WHERE LOWER(a.nome) LIKE LOWER(:nome) AND LOWER(a.cognome) LIKE LOWER(:cognome)", Utente.class);
+        query.setParameter("nome", "%" + nome + "%");
+        query.setParameter("cognome", "%" + cognome + "%");
+        return query.getSingleResult();
+    }
 }

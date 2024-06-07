@@ -46,6 +46,9 @@ public class Application {
 //        archivioDao.UserSave(utente1);
 //        archivioDao.UserSave(utente2);
 //        archivioDao.UserSave(utente3);
+        Utente utenteTrovato = archivioDao.findByNameAndSurname("y", "w");
+        System.out.println(utenteTrovato);
+        
         em.close();
         emf.close();
     }
