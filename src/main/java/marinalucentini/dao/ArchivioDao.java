@@ -52,4 +52,10 @@ public class ArchivioDao {
         return query.getResultList();
 
     }
+
+    public List<Catalogo> findByTitle(String title) {
+        TypedQuery<Catalogo> query = em.createQuery("SELECT a FROM Catalogo a WHERE  LOWER(titolo) LIKE LOWER(:title) ", Catalogo.class);
+        query.setParameter("title", "%" + title + "%");
+        return query.getResultList();
+    }
 }

@@ -23,19 +23,21 @@ public class Application {
 //        Rivista rivista2 = Archivio.createRivista(2022, Periodicità.SETTIMANALE);
 //        Rivista rivista3 = Archivio.createRivista(2022, Periodicità.SEMESTRALE);
         ArchivioDao archivioDao = new ArchivioDao(em);
-        archivioDao.Archiviosave(libro1);
+        //  archivioDao.Archiviosave(libro1);
 //        archivioDao.Archiviosave(libro2);
 //        archivioDao.Archiviosave(libro3);
 //        archivioDao.Archiviosave(rivista1);
 //        archivioDao.Archiviosave(rivista2);
 //        archivioDao.Archiviosave(rivista3);
         Catalogo elementoTrovato = archivioDao.findById("131f6ec1-e053-48e3-9358-6d76ddfaf340");
-        System.out.println(elementoTrovato);
+        // System.out.println(elementoTrovato);
         // archivioDao.findAndDeleteById("ca97e323-c14a-4511-8227-0307b4c6133d");
         List<Catalogo> elementiCercati = archivioDao.findByYearPubblication(2022);
         // elementiCercati.forEach(elemento -> System.out.println(elemento));
         List<Libro> libriCercati = archivioDao.findByAuthor("Joan Hettinger Jr.");
-        libriCercati.forEach(el -> System.out.println(el));
+        // libriCercati.forEach(el -> System.out.println(el));
+        List<Catalogo> elementiCercatiByTitle = archivioDao.findByTitle("ad");
+        elementiCercatiByTitle.forEach(el -> System.out.println(el));
         em.close();
         emf.close();
     }
