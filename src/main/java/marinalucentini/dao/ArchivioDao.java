@@ -115,5 +115,11 @@ public class ArchivioDao {
         query.getResultList().forEach(el -> System.out.println(el));
     }
 
+    public void findPrestitiNonRestituiti() {
+        TypedQuery<Prestito> query = em.createQuery("SELECT a FROM Prestito a WHERE a.dataRestituzioneEffettiva IS NULL", Prestito.class);
+        System.out.println("I prestiti non ancora restituiti o scaduti sono:");
+        query.getResultList().forEach(el -> System.out.println(el));
+    }
+
 
 }

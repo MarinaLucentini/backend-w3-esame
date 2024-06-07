@@ -54,7 +54,7 @@ public class Application {
         System.out.println(prestitoTrovato);
         //  archivioDao.updateDataRestituzioneEffettiva(LocalDate.now(), "d7d775ee-b723-414f-8d53-0eab25d62ef6");
         archivioDao.findByTesseraUtente("7cd0a230-aefe-4c67-99c4-b79fa0837eea");
-        
+        archivioDao.findPrestitiNonRestituiti();
 
         em.close();
         emf.close();
