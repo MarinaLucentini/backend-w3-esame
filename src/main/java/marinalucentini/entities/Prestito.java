@@ -23,6 +23,10 @@ public class Prestito {
     private LocalDate dataRestituzionePrevista;
     private LocalDate dataRestituzioneEffettiva;
 
+    public Prestito() {
+
+    }
+
     public Prestito(Utente utente, Catalogo elementoPrestato, LocalDate dataInizioPrestito, LocalDate dataRestituzionePrevista) {
         this.utente = utente;
         this.elementoPrestato = elementoPrestato;

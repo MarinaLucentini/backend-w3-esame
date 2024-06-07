@@ -48,7 +48,12 @@ public class Application {
         Prestito prestitoNonrestituito1 = Archivio.prendereInPrestito(utenteTrovato, elementoTrovato, LocalDate.of(2024, 05, 15));
         //  archivioDao.savePrestito(prestitoNonrestituito1);
         Prestito prestitoNonrestituito2 = Archivio.prendereInPrestito(utenteTrovato, elementoTrovato, LocalDate.of(2024, 06, 07));
-        archivioDao.savePrestito(prestitoNonrestituito2);
+        //  archivioDao.savePrestito(prestitoNonrestituito2);
+        Prestito prestitoTrovato =
+                archivioDao.findByIdPrestito("1532cbed-db35-4f56-9770-06b9a8bda635");
+        System.out.println(prestitoTrovato);
+        archivioDao.updateDataRestituzioneEffettiva(LocalDate.now(), "1532cbed-db35-4f56-9770-06b9a8bda635");
+
         em.close();
         emf.close();
     }
