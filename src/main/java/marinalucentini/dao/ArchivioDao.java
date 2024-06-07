@@ -2,9 +2,11 @@ package marinalucentini.dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
 import marinalucentini.entities.Catalogo;
 import marinalucentini.exception.ArchivioException;
 
+import java.util.List;
 import java.util.UUID;
 
 public class ArchivioDao {
@@ -35,5 +37,11 @@ public class ArchivioDao {
         em.remove(found);
         transaction.commit();
         System.out.println("L'elemento" + found.getTitolo() + "è stato correttamente eliminato");
+    }
+
+    public List<Catalogo> findByYearPubblication(int year) {
+        TypedQuery<Catalogo> query = em.createQuery("SELECT e FROM Catalogo e WHERE e.annoPubblicazione = :anno_pubblicazione", Catalogo.class);
+        query.setParameter("anno_pubblicazione", year);
+        return query.getResultList();
     }
 }

@@ -8,6 +8,8 @@ import marinalucentini.entities.Archivio;
 import marinalucentini.entities.Catalogo;
 import marinalucentini.entities.Libro;
 
+import java.util.List;
+
 public class Application {
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("catalogo_bibliografico");
 
@@ -29,7 +31,9 @@ public class Application {
 //        archivioDao.Archiviosave(rivista3);
         Catalogo elementoTrovato = archivioDao.findById("131f6ec1-e053-48e3-9358-6d76ddfaf340");
         System.out.println(elementoTrovato);
-        archivioDao.findAndDeleteById("ca97e323-c14a-4511-8227-0307b4c6133d");
+        // archivioDao.findAndDeleteById("ca97e323-c14a-4511-8227-0307b4c6133d");
+        List<Catalogo> elementiCercati = archivioDao.findByYearPubblication(2022);
+        elementiCercati.forEach(elemento -> System.out.println(elemento));
         em.close();
         emf.close();
     }
