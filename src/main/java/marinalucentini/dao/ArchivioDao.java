@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 import marinalucentini.entities.Catalogo;
+import marinalucentini.entities.Libro;
 import marinalucentini.exception.ArchivioException;
 
 import java.util.List;
@@ -43,5 +44,12 @@ public class ArchivioDao {
         TypedQuery<Catalogo> query = em.createQuery("SELECT e FROM Catalogo e WHERE e.annoPubblicazione = :anno_pubblicazione", Catalogo.class);
         query.setParameter("anno_pubblicazione", year);
         return query.getResultList();
+    }
+
+    public List<Libro> findByAuthor(String author) {
+        TypedQuery<Libro> query = em.createQuery("SELECT a FROM Libro a WHERE autore = :author", Libro.class);
+        query.setParameter("author", author);
+        return query.getResultList();
+
     }
 }

@@ -33,7 +33,9 @@ public class Application {
         System.out.println(elementoTrovato);
         // archivioDao.findAndDeleteById("ca97e323-c14a-4511-8227-0307b4c6133d");
         List<Catalogo> elementiCercati = archivioDao.findByYearPubblication(2022);
-        elementiCercati.forEach(elemento -> System.out.println(elemento));
+        // elementiCercati.forEach(elemento -> System.out.println(elemento));
+        List<Libro> libriCercati = archivioDao.findByAuthor("Joan Hettinger Jr.");
+        libriCercati.forEach(el -> System.out.println(el));
         em.close();
         emf.close();
     }
