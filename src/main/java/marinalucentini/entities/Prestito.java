@@ -12,10 +12,10 @@ public class Prestito {
     @GeneratedValue
     private UUID id;
     @ManyToOne
-    @JoinColumn(name = "utente_id", nullable = false)
+    @JoinColumn(name = "utente_id")
     private Utente utente;
     @ManyToOne
-    @JoinColumn(name = "codice_ISBN", nullable = false, unique = true)
+    @JoinColumn(name = "codice_ISBN")
     private Catalogo elementoPrestato;
     @Column(nullable = false)
     private LocalDate dataInizioPrestito;
