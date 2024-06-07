@@ -107,5 +107,13 @@ public class ArchivioDao {
         System.out.println("L'elemento è stato restituito il giorno" + data);
     }
 
+    public void findByTesseraUtente(String tessera) {
+        TypedQuery<Prestito> query = em.createQuery("SELECT a FROM Prestito a WHERE a.utente.numeroTessera = :tessera", Prestito.class);
+        query.setParameter("tessera", UUID.fromString(tessera));
+        System.out.println("I prestiti corrispondente al numero tessera sono");
+
+        query.getResultList().forEach(el -> System.out.println(el));
+    }
+
 
 }

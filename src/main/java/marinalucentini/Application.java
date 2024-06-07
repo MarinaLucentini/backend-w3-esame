@@ -52,7 +52,9 @@ public class Application {
         Prestito prestitoTrovato =
                 archivioDao.findByIdPrestito("1532cbed-db35-4f56-9770-06b9a8bda635");
         System.out.println(prestitoTrovato);
-        archivioDao.updateDataRestituzioneEffettiva(LocalDate.now(), "1532cbed-db35-4f56-9770-06b9a8bda635");
+        //  archivioDao.updateDataRestituzioneEffettiva(LocalDate.now(), "d7d775ee-b723-414f-8d53-0eab25d62ef6");
+        archivioDao.findByTesseraUtente("7cd0a230-aefe-4c67-99c4-b79fa0837eea");
+        
 
         em.close();
         emf.close();
